@@ -21,9 +21,15 @@ pipeline {
             }
         }
 
-        stage('Build') {
+        stage('Docker Test') {
             steps {
-                bat 'echo Build stage completed'
+                bat 'docker --version'
+            }
+        }
+
+        stage('Docker Build') {
+            steps {
+                bat 'docker build -t devops-cicd-pipeline:latest .'
             }
         }
     }
